@@ -5,9 +5,24 @@ import { PrinciplesSection } from "@/components/principles-section"
 import { ColophonSection } from "@/components/colophon-section"
 import { SideNav } from "@/components/side-nav"
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Agent Loadout",
+  description: "Install a curated set of 50+ terminal tools for agentic coding workflows. One command. macOS, Linux, and Windows.",
+  applicationCategory: "DeveloperApplication",
+  operatingSystem: ["macOS", "Linux", "Windows"],
+  url: "https://conorluddy.github.io/AgentLoadout",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  author: { "@type": "Person", name: "Conor Luddy", url: "https://github.com/conorluddy" },
+  codeRepository: "https://github.com/conorluddy/AgentLoadout",
+  license: "https://opensource.org/licenses/MIT",
+}
+
 export default function Page() {
   return (
     <main className="relative min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <SideNav />
       <div className="grid-bg fixed inset-0 opacity-30" aria-hidden="true" />
 

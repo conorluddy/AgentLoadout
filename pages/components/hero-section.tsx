@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import Image from "next/image"
 import { ScrambleTextOnHover } from "@/components/scramble-text"
 import { SplitFlapText, SplitFlapMuteToggle, SplitFlapAudioProvider } from "@/components/split-flap-text"
 import { AnimatedNoise } from "@/components/animated-noise"
@@ -45,7 +46,8 @@ export function HeroSection() {
       </div>
 
       {/* Main content */}
-      <div ref={contentRef} className="flex-1 w-full">
+      <div ref={contentRef} className="relative flex-1 w-full">
+        {/* LOADOUT text — behind image+scanlines */}
         <SplitFlapAudioProvider>
           <div className="relative">
             <SplitFlapText text="LOADOUT" speed={80} />
@@ -55,37 +57,57 @@ export function HeroSection() {
           </div>
         </SplitFlapAudioProvider>
 
-        <h1 className="font-[var(--font-bebas)] text-muted-foreground/60 text-[clamp(1rem,3vw,2rem)] mt-4 tracking-wide">
-          One Command to Arm Your Terminal
-        </h1>
-
-        <p className="mt-12 max-w-lg font-mono text-sm text-muted-foreground leading-relaxed">
-          AI coding agents are only as good as the tools on the machine. A fresh install has few of them.
-          <span className="text-accent"> agent-loadout</span> installs a curated set of 50+ terminal tools -- the ones that actually matter for agentic workflows.
-        </p>
-
-        {/* Install command */}
-        <div className="mt-8 inline-flex items-center gap-3 border border-accent/30 bg-accent/5 px-6 py-3 font-mono text-sm">
-          <span className="text-muted-foreground">$</span>
-          <code className="text-accent">npx agent-loadout</code>
+        {/* Hero image + scanlines — in front of LOADOUT, behind rest of content */}
+        <div className="hidden md:block absolute inset-0 z-[1] overflow-hidden pointer-events-none" aria-hidden="true">
+          <Image
+            src="/agentloadout.jpg"
+            alt=""
+            fill
+            className="object-cover object-right opacity-20"
+            priority
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: "repeating-linear-gradient(to bottom, transparent, transparent 2px, rgba(0,0,0,0.3) 2px, rgba(0,0,0,0.3) 4px)",
+            }}
+          />
         </div>
 
-        <div className="mt-12 flex items-center gap-8">
-          <a
-            href="#catalog"
-            className="group inline-flex items-center gap-3 border border-foreground/20 px-6 py-3 font-mono text-xs uppercase tracking-widest text-foreground hover:border-accent hover:text-accent transition-all duration-200"
-          >
-            <ScrambleTextOnHover text="View Catalog" as="span" duration={0.6} />
-            <BitmapChevron className="transition-transform duration-[400ms] ease-in-out group-hover:rotate-45" />
-          </a>
-          <a
-            href="https://github.com/conorluddy/AgentLoadout"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors duration-200"
-          >
-            GitHub
-          </a>
+        {/* Rest of content — in front of scanlines */}
+        <div className="relative z-10">
+          <h1 className="font-[var(--font-bebas)] text-muted-foreground/60 text-[clamp(1rem,3vw,2rem)] mt-4 tracking-wide">
+            One Command to Arm Your Terminal
+          </h1>
+
+          <p className="mt-12 max-w-lg font-mono text-sm text-muted-foreground leading-relaxed">
+            AI coding agents are only as good as the tools on the machine. A fresh install has few of them.
+            <span className="text-accent"> agent-loadout</span> installs a curated set of 50+ terminal tools -- the ones that actually matter for agentic workflows.
+          </p>
+
+          {/* Install command */}
+          <div className="mt-8 inline-flex items-center gap-3 border border-accent/30 bg-accent/5 px-6 py-3 font-mono text-sm">
+            <span className="text-muted-foreground">$</span>
+            <code className="text-accent">npx agent-loadout</code>
+          </div>
+
+          <div className="mt-12 flex items-center gap-8">
+            <a
+              href="#catalog"
+              className="group inline-flex items-center gap-3 border border-foreground/20 px-6 py-3 font-mono text-xs uppercase tracking-widest text-foreground hover:border-accent hover:text-accent transition-all duration-200"
+            >
+              <ScrambleTextOnHover text="View Catalog" as="span" duration={0.6} />
+              <BitmapChevron className="transition-transform duration-[400ms] ease-in-out group-hover:rotate-45" />
+            </a>
+            <a
+              href="https://github.com/conorluddy/AgentLoadout"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors duration-200"
+            >
+              GitHub
+            </a>
+          </div>
         </div>
       </div>
 

@@ -23,19 +23,22 @@ export const metadata: Metadata = {
   description:
     "Install a curated set of 50+ terminal tools for agentic coding workflows. One command. macOS, Linux, and Windows.",
   metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
     title: "Agent Loadout — One Command to Arm Your Terminal",
     description: "Install 50+ curated terminal tools for agentic coding. One command.",
     url: siteUrl,
     siteName: "Agent Loadout",
-    images: [{ url: "/agentloadout.png", width: 1536, height: 1024, alt: "Agent Loadout" }],
+    images: [{ url: "/agentloadout.jpg", width: 1536, height: 1024, alt: "Agent Loadout — cyberpunk workshop with curated terminal tools for AI coding agents" }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Agent Loadout — One Command to Arm Your Terminal",
     description: "Install 50+ curated terminal tools for agentic coding. One command.",
-    images: ["/agentloadout.png"],
+    images: ["/agentloadout.jpg"],
   },
   icons: {
     icon: [

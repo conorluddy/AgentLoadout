@@ -17,22 +17,22 @@
   --secondary-foreground: oklch(0.85 0 0);
   --muted: oklch(0.25 0 0);
   --muted-foreground: oklch(0.55 0 0);
-  --accent: oklch(0.85 0.2 90);
+  --accent: lch(53 89.56 6.56);
   --accent-foreground: oklch(0.08 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
   --border: oklch(0.25 0 0);
   --input: oklch(0.2 0 0);
-  --ring: oklch(0.85 0.2 90);
+  --ring: lch(53 89.56 6.56);
   --radius: 0rem;
   --sidebar: oklch(0.1 0 0);
   --sidebar-foreground: oklch(0.95 0 0);
-  --sidebar-primary: oklch(0.85 0.2 90);
+  --sidebar-primary: lch(53 89.56 6.56);
   --sidebar-primary-foreground: oklch(0.08 0 0);
   --sidebar-accent: oklch(0.15 0 0);
   --sidebar-accent-foreground: oklch(0.95 0 0);
   --sidebar-border: oklch(0.25 0 0);
-  --sidebar-ring: oklch(0.85 0.2 90);
+  --sidebar-ring: lch(53 89.56 6.56);
 }
 
 @theme inline {
@@ -133,6 +133,6 @@
 
 /* Custom selection color */
 ::selection {
-  background: oklch(0.85 0.2 90);
+  background: lch(53 89.56 6.56);
   color: oklch(0.08 0 0);
 }
