@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import Image from "next/image"
 import { ScrambleTextOnHover } from "@/components/scramble-text"
 import { SplitFlapText, SplitFlapMuteToggle, SplitFlapAudioProvider } from "@/components/split-flap-text"
 import { AnimatedNoise } from "@/components/animated-noise"
@@ -59,12 +58,11 @@ export function HeroSection() {
 
         {/* Hero image + scanlines — in front of LOADOUT, behind rest of content */}
         <div className="hidden md:block absolute inset-0 z-[1] overflow-hidden pointer-events-none" aria-hidden="true">
-          <Image
-            src="/agentloadout.jpg"
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`${process.env.__NEXT_ROUTER_BASEPATH ?? ""}/agentloadout.jpg`}
             alt=""
-            fill
-            className="object-cover object-right opacity-20"
-            priority
+            className="absolute inset-0 w-full h-full object-cover object-right opacity-20"
           />
           <div
             className="absolute inset-0"
