@@ -178,7 +178,7 @@ export function ColophonSection() {
         <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
           agent-loadout / by conorluddy
         </p>
-        <p className="font-mono text-[10px] text-muted-foreground">One command. 50+ tools. Your agent is ready.</p>
+        <p className="font-mono text-[10px] text-muted-foreground">One command. 64 tools. Your agent is ready.</p>
       </div>
     </section>
   )

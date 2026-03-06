@@ -28,11 +28,24 @@ brew "duckdb"
 brew "htmlq"
 brew "typos-cli"
 brew "gum"
+brew "oha"
+brew "gron"
+brew "lychee"
+brew "vale"
 
 # Media
 brew "ffmpeg"
 brew "exiftool"
 brew "imagemagick"
+brew "vips"
+
+# Design
+brew "resvg"
+brew "chafa"
+brew "pastel"
+brew "d2"
+brew "pngquant"
+brew "oxipng"
 
 # DX
 brew "eza"
@@ -50,6 +63,9 @@ brew "procs"
 brew "uv"
 brew "hexyl"
 brew "taplo"
+brew "fx"
+brew "csview"
+brew "asciinema"
 
 # Security
 brew "trivy"
