@@ -80,13 +80,18 @@ export function HeroSection() {
 
           <p className="mt-12 max-w-lg font-mono text-sm text-muted-foreground leading-relaxed">
             AI coding agents are only as good as the tools on the machine. A fresh install has few of them.
-            <span className="text-accent"> agent-loadout</span> installs a curated set of 50+ terminal tools -- the ones that actually matter for agentic workflows.
+            <span className="text-accent"> agent-loadout</span> installs a curated set of 64 terminal tools -- the ones that actually matter for agentic workflows.
           </p>
 
           {/* Install command */}
-          <div className="mt-8 inline-flex items-center gap-3 border border-accent/30 bg-accent/5 px-6 py-3 font-mono text-sm">
-            <span className="text-muted-foreground">$</span>
-            <code className="text-accent">npx agent-loadout</code>
+          <div className="mt-8 flex items-center gap-4">
+            <div className="inline-flex items-center gap-3 border border-accent/30 bg-accent/5 px-6 py-3 font-mono text-sm">
+              <span className="text-muted-foreground">$</span>
+              <code className="text-accent">npx agent-loadout</code>
+            </div>
+            <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground/60 border border-border/30 px-2 py-1">
+              v1.2.0
+            </span>
           </div>
 
           <div className="mt-12 flex items-center gap-8">
@@ -112,7 +117,7 @@ export function HeroSection() {
       {/* Floating info tag */}
       <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12">
         <div className="border border-border px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-          50+ Tools / macOS + Linux + Windows
+          64 Tools / macOS + Linux + Windows
         </div>
       </div>
     </section>

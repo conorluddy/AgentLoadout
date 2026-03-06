@@ -20,7 +20,7 @@ export type Tool = {
   seeAlso?: string[];
 };
 
-export type PresetId = "core" | "agent" | "media" | "dx" | "security";
+export type PresetId = "core" | "agent" | "media" | "design" | "dx" | "security";
 
 export type Preset = {
   id: PresetId;
@@ -45,7 +45,13 @@ export const PRESETS: Preset[] = [
   {
     id: "media",
     name: "Media",
-    description: "Image, audio, and video pipeline tools",
+    description: "Audio, video, and image pipeline tools",
+    defaultOn: false,
+  },
+  {
+    id: "design",
+    name: "Design",
+    description: "Visual asset workflows — SVG, colour, and image preview",
     defaultOn: false,
   },
   {
@@ -420,6 +426,54 @@ export const TOOLS: Tool[] = [
     tags: ["interactive shell", "tui prompt", "user input", "shell script ui", "confirm dialog"],
     seeAlso: ["fzf", "just"],
   },
+  {
+    id: "oha",
+    name: "oha",
+    description: "HTTP load tester with JSON output",
+    preset: "agent",
+    verify: "oha --version",
+    install: brewScoopCargo("oha", "oha"),
+    tags: ["load test", "http benchmark", "stress test", "api performance", "latency"],
+    seeAlso: ["xh", "hyperfine"],
+  },
+  {
+    id: "gron",
+    name: "gron",
+    description: "Flatten JSON for grepping",
+    preset: "agent",
+    verify: "gron --version",
+    install: {
+      darwin: [{ method: "brew", package: "gron" }],
+      linux: null,
+      win32: [{ method: "scoop", package: "gron" }],
+    },
+    tags: ["json grep", "flatten json", "json search", "json path", "json debug"],
+    seeAlso: ["jq", "fx", "duckdb"],
+  },
+  {
+    id: "lychee",
+    name: "lychee",
+    description: "Fast link checker",
+    preset: "agent",
+    verify: "lychee --version",
+    install: brewScoopCargo("lychee", "lychee"),
+    tags: ["link check", "broken links", "url validation", "documentation", "dead links"],
+    seeAlso: ["xh", "typos", "vale"],
+  },
+  {
+    id: "vale",
+    name: "vale",
+    description: "Prose linter for docs",
+    preset: "agent",
+    verify: "vale --version",
+    install: {
+      darwin: [{ method: "brew", package: "vale" }],
+      linux: null,
+      win32: [{ method: "scoop", package: "vale" }],
+    },
+    tags: ["prose lint", "writing style", "documentation quality", "grammar", "technical writing"],
+    seeAlso: ["typos", "lychee", "pandoc"],
+  },
 
   // ── Media ─────────────────────────────────────────────
   {
@@ -454,17 +508,105 @@ export const TOOLS: Tool[] = [
     verify: "magick -version",
     install: universal("imagemagick"),
     tags: ["image resize", "image convert", "image transform", "thumbnail", "crop image"],
-    seeAlso: ["exiftool", "svgo", "ffmpeg"],
+    seeAlso: ["exiftool", "vips", "ffmpeg"],
   },
+  {
+    id: "vips",
+    name: "libvips",
+    description: "Fast image processing pipeline",
+    preset: "media",
+    verify: "vips --version",
+    install: {
+      darwin: [{ method: "brew", package: "vips" }],
+      linux: [{ method: "apt", package: "libvips-tools" }],
+      win32: null,
+    },
+    tags: ["image processing", "batch images", "resize", "thumbnail", "sharp backend"],
+    seeAlso: ["imagemagick", "resvg"],
+  },
+
+  // ── Design ─────────────────────────────────────────────
   {
     id: "svgo",
     name: "svgo",
     description: "SVG optimiser",
-    preset: "media",
+    preset: "design",
     verify: "svgo --version",
     install: npmAll("svgo"),
     tags: ["svg optimize", "svg compress", "vector graphics", "svg minify", "icon optimize"],
-    seeAlso: ["imagemagick"],
+    seeAlso: ["resvg", "imagemagick"],
+  },
+  {
+    id: "resvg",
+    name: "resvg",
+    description: "High-fidelity SVG renderer",
+    preset: "design",
+    verify: "resvg --version",
+    install: {
+      darwin: [{ method: "brew", package: "resvg" }],
+      linux: [{ method: "cargo", package: "resvg" }],
+      win32: null,
+    },
+    tags: ["svg render", "svg to png", "vector graphics", "svg rasterize"],
+    seeAlso: ["svgo", "vips"],
+  },
+  {
+    id: "chafa",
+    name: "chafa",
+    description: "Image-to-ANSI art renderer",
+    preset: "design",
+    verify: "chafa --version",
+    install: {
+      darwin: [{ method: "brew", package: "chafa" }],
+      linux: [{ method: "apt", package: "chafa" }],
+      win32: null,
+    },
+    tags: ["image preview", "terminal image", "ansi art", "image in terminal"],
+    seeAlso: ["vips", "imagemagick"],
+  },
+  {
+    id: "pastel",
+    name: "pastel",
+    description: "Color manipulation and palette tool",
+    preset: "design",
+    verify: "pastel --version",
+    install: brewScoopCargo("pastel", "pastel"),
+    tags: ["color", "palette", "design tokens", "color convert", "color inspect"],
+    seeAlso: ["chafa", "bat"],
+  },
+  {
+    id: "d2",
+    name: "d2",
+    description: "Declarative diagramming language",
+    preset: "design",
+    verify: "d2 version",
+    install: {
+      darwin: [{ method: "brew", package: "d2" }],
+      linux: null,
+      win32: [{ method: "scoop", package: "d2" }],
+    },
+    tags: ["diagram", "architecture diagram", "flowchart", "svg generation", "documentation"],
+    seeAlso: ["resvg", "svgo", "pandoc"],
+  },
+  {
+    id: "pngquant",
+    name: "pngquant",
+    description: "Lossy PNG compressor",
+    preset: "design",
+    verify: "pngquant --version",
+    install: universal("pngquant"),
+    tags: ["png compress", "image optimize", "lossy compression", "web assets"],
+    seeAlso: ["oxipng", "svgo", "imagemagick"],
+  },
+  {
+    id: "oxipng",
+    name: "oxipng",
+    description: "Lossless PNG optimizer",
+    preset: "design",
+    verify: "oxipng --version",
+    install: brewScoopCargo("oxipng", "oxipng"),
+    tags: ["png optimize", "lossless compression", "image optimize", "web assets"],
+    seeAlso: ["pngquant", "svgo", "imagemagick"],
   },
 
   // ── DX ────────────────────────────────────────────────
@@ -649,6 +791,44 @@ export const TOOLS: Tool[] = [
     install: brewScoopCargo("taplo", "taplo-cli"),
     tags: ["toml", "toml lint", "toml format", "config validation", "cargo toml"],
     seeAlso: ["yq", "biome"],
+  },
+  {
+    id: "fx",
+    name: "fx",
+    description: "Interactive JSON viewer",
+    preset: "dx",
+    verify: "fx --version",
+    install: {
+      darwin: [{ method: "brew", package: "fx" }],
+      linux: null,
+      win32: [{ method: "scoop", package: "fx" }],
+    },
+    tags: ["json viewer", "interactive json", "json explorer", "json filter"],
+    seeAlso: ["jq", "bat"],
+  },
+  {
+    id: "csview",
+    name: "csview",
+    description: "CSV/TSV viewer with column alignment",
+    preset: "dx",
+    verify: "csview --version",
+    install: brewScoopCargo("csview", "csview"),
+    tags: ["csv", "tsv", "tabular data", "spreadsheet", "data viewer"],
+    seeAlso: ["duckdb", "jq"],
+  },
+  {
+    id: "asciinema",
+    name: "asciinema",
+    description: "Terminal session recorder",
+    preset: "dx",
+    verify: "asciinema --version",
+    install: {
+      darwin: [{ method: "brew", package: "asciinema" }],
+      linux: [{ method: "apt", package: "asciinema" }],
+      win32: null,
+    },
+    tags: ["terminal recording", "demo", "screen capture", "documentation"],
+    seeAlso: ["bat", "glow"],
   },
 
   // ── Security ──────────────────────────────────────────

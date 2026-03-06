@@ -7,7 +7,9 @@ const navItems = [
   { id: "hero", label: "Index" },
   { id: "presets", label: "Presets" },
   { id: "catalog", label: "Catalog" },
+  { id: "personas", label: "Personas" },
   { id: "workflow", label: "Workflow" },
+  { id: "changelog", label: "Changelog" },
   { id: "colophon", label: "Reference" },
 ]
 

@@ -1,7 +1,9 @@
 import { HeroSection } from "@/components/hero-section"
 import { SignalsSection } from "@/components/signals-section"
 import { WorkSection } from "@/components/work-section"
+import { PersonasSection } from "@/components/personas-section"
 import { PrinciplesSection } from "@/components/principles-section"
+import { ChangelogSection } from "@/components/changelog-section"
 import { ColophonSection } from "@/components/colophon-section"
 import { SideNav } from "@/components/side-nav"
 
@@ -9,7 +11,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   name: "Agent Loadout",
-  description: "Install a curated set of 50+ terminal tools for agentic coding workflows. One command. macOS, Linux, and Windows.",
+  description: "Install a curated set of 64 terminal tools for agentic coding workflows. One command. macOS, Linux, and Windows.",
   applicationCategory: "DeveloperApplication",
   operatingSystem: ["macOS", "Linux", "Windows"],
   url: "https://conorluddy.github.io/AgentLoadout",
@@ -30,7 +32,9 @@ export default function Page() {
         <HeroSection />
         <SignalsSection />
         <WorkSection />
+        <PersonasSection />
         <PrinciplesSection />
+        <ChangelogSection />
         <ColophonSection />
       </div>
     </main>

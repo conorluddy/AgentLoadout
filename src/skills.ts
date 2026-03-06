@@ -54,6 +54,20 @@ import taplo from "./skills/taplo.js";
 import semgrep from "./skills/semgrep.js";
 import age from "./skills/age.js";
 import doggo from "./skills/doggo.js";
+import vips from "./skills/vips.js";
+import resvg from "./skills/resvg.js";
+import chafa from "./skills/chafa.js";
+import oha from "./skills/oha.js";
+import fx from "./skills/fx.js";
+import pastel from "./skills/pastel.js";
+import csview from "./skills/csview.js";
+import asciinema from "./skills/asciinema.js";
+import d2 from "./skills/d2.js";
+import pngquant from "./skills/pngquant.js";
+import oxipng from "./skills/oxipng.js";
+import gron from "./skills/gron.js";
+import lychee from "./skills/lychee.js";
+import vale from "./skills/vale.js";
 
 const PREFIX = "agent-loadout";
 
@@ -109,6 +123,20 @@ const SKILL_CONTENT: Record<string, string> = {
   semgrep,
   age,
   doggo,
+  vips,
+  resvg,
+  chafa,
+  oha,
+  fx,
+  pastel,
+  csview,
+  asciinema,
+  d2,
+  pngquant,
+  oxipng,
+  gron,
+  lychee,
+  vale,
 };
 
 function skillFilename(toolId: string): string {
